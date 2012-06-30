@@ -1,4 +1,6 @@
 Aufstellung::Application.routes.draw do
+  root to: 'people#index'
+  
   resources :people
 
   # The priority is based upon order of creation:
