@@ -53,7 +53,8 @@
                   <%
                     {
                       'People' => ['icon-user', '/people'],
-                      'Item Classes' => ['icon-inbox', '/item_classes']
+                      'Item Classes' => ['icon-inbox', '/item_classes'],
+                      'Items' => ['icon-book', '/items']
                     }.each do |k, v|
                   %>
                     <li><%= link_to "<i class='#{v[0]}'></i> #{k}".html_safe, v[1] %></li>
