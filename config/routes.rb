@@ -1,4 +1,6 @@
 Aufstellung::Application.routes.draw do
+  resources :item_classes
+
   root to: 'people#index'
   
   resources :people
