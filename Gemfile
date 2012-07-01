@@ -39,4 +39,5 @@ gem 'jquery-rails'
 
 gem "twitter-bootstrap-rails"
 gem "thin"
-gem "yaml_db"
+# gem "yaml_db"
+gem "jquery-rails"

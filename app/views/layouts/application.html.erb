@@ -12,6 +12,8 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+
 
     <link href="images/favicon.ico" rel="shortcut icon">
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
@@ -54,7 +56,8 @@
                     {
                       'People' => ['icon-user', '/people'],
                       'Item Classes' => ['icon-inbox', '/item_classes'],
-                      'Items' => ['icon-book', '/items']
+                      'Items' => ['icon-book', '/items'],
+                      'Bills' => ['icon-shopping-cart', '/bills']
                     }.each do |k, v|
                   %>
                     <li><%= link_to "<i class='#{v[0]}'></i> #{k}".html_safe, v[1] %></li>
@@ -75,7 +78,5 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-
   </body>
 </html>

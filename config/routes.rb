@@ -1,11 +1,13 @@
 Aufstellung::Application.routes.draw do
   resources :items
-
   resources :item_classes
-
-  root to: 'people#index'
-  
   resources :people
+  
+  resources :bills
+  match '/bills/remove/:item_id/:bill_id' => 'bills#remove_item', as: 'remove_item_from_bill'
+  match '/bills/add/:item_id/:bill_id' => 'bills#add_item', as: 'add_item_to_bill'
+
+  root to: 'bills#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

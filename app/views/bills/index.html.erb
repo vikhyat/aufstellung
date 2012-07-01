@@ -1,0 +1,31 @@
+<%- model_class = Bill.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_bill_path,
+            :class => 'btn btn-primary' %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= link_to bill.id, bill_path(bill) %></td>
+        <td><%= link_to bill.customer_name, bill_path(bill) %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_bill_path(bill), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

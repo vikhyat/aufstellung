@@ -1,0 +1,90 @@
+<%- model_class = @bill.class -%>
+<div class="page-header">
+  <h1>Bill #<%= @bill.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Name:</strong></dt>
+  <dd><%= @bill.customer_name %></dd>
+  <dt><strong>Total:</strong></dt>
+  <dd>Rs. <%= @bill.amount_owed %></dd>
+  <dt><strong>Paid:</strong></dt>
+  <dd>Rs. <%= @bill.amount_paid || 0 %></dd>
+  <dt><strong>Change:</strong></dt>
+  <dd>Rs. <%= (@bill.amount_paid || 0) - @bill.amount_owed %></dd>
+</dl>
+
+<table class="table table-striped well">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Previous Owner</th>
+      <th>Price</th>
+      <th class='act'>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bill.items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.title %></td>
+      <td><%= item.person.name %></td>
+      <td><%= item.price %></td>
+      <td class='act'><%= link_to 'Remove', remove_item_from_bill_path(@bill, item), class: 'btn btn-danger' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="act inventory well">
+  <h4>Inventory</h4>
+  <form class="form-search" onsubmit="return false;">
+    <input class="search-query" />
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr class=''>
+        <th>Code</th>
+        <th>Title</th>
+        <th>Previous Owner</th>
+        <th>Actions</th>
+      </tr>
+    <tbody>
+    <% @items.each do |item| %>
+      <tr class="<%= (item.title + item.person.name).downcase.gsub(/\s/, '') %>">
+        <td><%= item.id %></td>
+        <td><%= item.title %></td>
+        <td><%= item.person.name %></td>
+        <td><%= link_to 'Add', add_item_to_bill_path(@bill, item), class: 'btn btn-primary btn-mini' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="form-actions act">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              bills_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_bill_path(@bill), :class => 'btn' %>
+</div>
+
+<script>
+  $('.inventory tr').hide();
+  $('.search-query').change(function() {
+    var query = $('.search-query').attr('value').split(' ');
+    
+    $('.inventory tr').each(function(index, tr) {
+      var blurb = tr.className;
+      var flag = (query[0] != '');
+      for (bit in query) {
+        flag = flag && (blurb.indexOf(query[bit]) != -1);
+      }
+      if (flag) {
+        $(tr).show();
+      } else {
+        $(tr).hide();
+      }
+    });
+  });
+</script>

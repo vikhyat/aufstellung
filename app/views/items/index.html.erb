@@ -23,7 +23,7 @@
         <td><%= link_to item.id, item_path(item) %></td>
         <td><%= item.item_class.title %></td>
         <td><%= item.person.name %></td>
-        <td><%= item.transaction.customer_name rescue '<i>not sold</i>'.html_safe %></td>
+        <td><%= item.bill.nil? ? '<i>not sold</i>'.html_safe : item.bill.customer_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_item_path(item), :class => 'btn btn-mini' %>

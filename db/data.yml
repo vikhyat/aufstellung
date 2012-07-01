@@ -382,7 +382,7 @@ items:
   - id
   - item_class_id
   - person_id
-  - transaction_id
+  - bill_id
   - created_at
   - updated_at
   records: 

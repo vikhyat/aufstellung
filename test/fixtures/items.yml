@@ -3,9 +3,9 @@
 one:
   item_class: 
   person: 
-  transaction: 
+  bill: 
 
 two:
   item_class: 
   person: 
-  transaction: 
+  bill: 

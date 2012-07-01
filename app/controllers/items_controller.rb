@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
       @people = Person.all
     end
     @item_classes = ItemClass.all.sort_by {|x| x.title }
-    @transactions = Transaction.all
+    @bills = Bill.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     
     @people = Person.all
     @item_classes = ItemClass.all
-    @transactions = Transaction.all
+    @bills = Bill.all
   end
 
   # POST /items

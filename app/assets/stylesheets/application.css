@@ -13,5 +13,5 @@
  */
 
 @media print {
-  .sidebar-nav { display: none; }
+  .sidebar-nav, .act { display: none; }
 }

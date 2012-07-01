@@ -9,7 +9,7 @@
   <dt><strong>Previous Owner:</strong></dt>
   <dd><%= link_to @item.person.name, @item.person %></dd>
   <dt><strong>Sold To:</strong></dt>
-  <dd><%= link_to @item.transaction.customer_name, @item.transaction rescue '' %></dd>
+  <dd><%= link_to @item.bill.customer_name, @item.bill rescue '' %></dd>
 </dl>
 
 <div class="form-actions">
