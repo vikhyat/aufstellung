@@ -31,7 +31,7 @@
       <td><%= item.title %></td>
       <td><%= item.person.name %></td>
       <td><%= item.price %></td>
-      <td class='act'><%= link_to 'Remove', remove_item_from_bill_path(@bill, item), class: 'btn btn-danger' %></td>
+      <td class='act'><%= link_to 'Remove', remove_item_from_bill_path(item, @bill), class: 'btn btn-danger' %></td>
     </tr>
     <% end %>
   </tbody>
