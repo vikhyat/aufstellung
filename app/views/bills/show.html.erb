@@ -56,7 +56,7 @@
         <td><%= item.id %></td>
         <td><%= item.title %></td>
         <td><%= item.person.name %></td>
-        <td><%= link_to 'Add', add_item_to_bill_path(@bill, item), class: 'btn btn-primary btn-mini' %></td>
+        <td><%= link_to 'Add', add_item_to_bill_path(item, @bill), class: 'btn btn-primary btn-mini' %></td>
       </tr>
     <% end %>
   </table>
